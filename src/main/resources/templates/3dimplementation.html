@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{index :: head-content}">
+
+    </head>
+    <body>
+    <div th:replace="~{index :: navbar}"></div>
+    <div th:replace="~{index :: the-welcome-page}">
+    </div>
+
+     <section class="designed-plan">
+    <div class="const-photo-container">
+            <video id="video" class="video" src="/videos/HOUSE DESIGN IDEA _ 10 X 10 meters _ 3 Bedroom Pinoy Dream House.mp4"></video>
+           
+            <div class="oon-parole-holder">
+           
+                <div class="titre-con"><p class="titre-con-text">Titire</p></div>
+
+                 <div class="titre-address"><p class="text-address">Address</p></div>
+               
+                 <div class="buton">
+                   <button class="play-pause-btn">Play</button>
+                 </div>
+
+                 <div class="titre-comment"><p class="comment-now"> only 310 characters</p></div>
+           
+             </div>
+    </div>
+
+    <div class="const-photo-container">
+        <video class="video" src="/videos/HOUSE DESIGN IDEA _ 10 X 10 meters _ 3 Bedroom Pinoy Dream House.mp4"></video>
+        <div class="oon-parole-holder">
+            <div class="titre-con"><p class="titre-con-text">Titire</p></div>
+            <div class="titre-address"><p class="text-address">Address</p></div>
+            <div class="buton">
+                <button class="play-pause-btn">Play</button>
+            </div>
+            <div class="titre-comment"><p class="comment-now"> only 310 characters</p></div>
+        </div>
+    </div>
+    
+
+   
+</section>
+
+
+
+
+    <div th:replace="~{index :: the-footer}"></div>
+    <div th:replace="~{index :: the-real-footer}"></div>
+<script src="../javascript/script.js"></script>
+<script src="../javascript/appearancescript.js"></script>
+<script src="https://www.youtube.com/player_api"></script>
+</body>
+</html>

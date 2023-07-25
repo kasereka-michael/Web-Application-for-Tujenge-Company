@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head-content}">
+</head>
+    <body>
+    <div th:replace="~{index :: navbar}"></div>
+    <div th:replace="~{index :: the-welcome-page}">
+    </div>
+
+
+
+
+    <section class="contact-container">
+        <h1 class="about-us-head hidden">Contact us</h1>
+        <div class="contact-box">
+            <div class="form-box">
+                <form class="contact-form">
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: center;">
+                    <div class="fdiv">
+                        <label>full name: <span>*</span></label><br>
+                        <input type="text" name="full-name" class="the-field" required autofocus/><br>
+                        <label>email : <span>*</span></label><br>
+                        <input type="email" name="email" id="email" placeholder="" class="the-field" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"/><br>
+                        <label>phone number: <span>*</span></label><br>
+                        <input type="tel" name="phone-number" required maxlength="13" class="the-field" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+                    </div>
+                    <div class="sdiv">
+                    <label>address: </label><br>
+                    <input type="text" name="address" class="the-field" required/><br>
+                    <label>subject: </label><br>
+                    <select class="the-field">
+                        <option>None</option>
+                        <option>Request</option>
+                        <option>Suggestion</option>
+                        <option>Comment</option>
+                        <option>Other</option>
+                    </select><br>
+                    <label>message: </label><br>
+                    <textarea maxlength="500" class="the-field"style="resize: none;" spellcheck="true" placeholder="only (500 characters)"></textarea>
+                    </div>
+                    </div>
+                    <div class="btn-container">
+                    <input type="button" value="submit" class="contact-btn">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="photo-box">
+                <img src="/images/plan.png" alt="" width="100%" height="100%">
+            </div>
+
+        </div>
+
+    </section>
+
+         <div th:replace="~{index :: the-footer}"></div>
+         <div th:replace="~{index :: the-real-footer}"></div>
+        <script src="/javascript/script.js"></script>
+        <script src="/javascript/appearancescript.js"></script>
+    </body>
+</html>

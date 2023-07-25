@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{index :: head-content}">
+</head>
+    <body>
+    <div th:replace="~{index :: navbar}"></div>
+    <div th:replace="~{index :: the-welcome-page}">
+    </div>
+
+    <section class="designed-plan">
+    <div class="const-photo-container">
+        <img src="/images/const.jpg" alt="">
+        <div class="oon-parole-holder">
+            <div class="titre-con"><p class="titre-con-text">Titire</p></div>
+
+            <div class="titre-address"><p class="text-address">Address</p></div>
+
+            <div class="titre-comment"><p class="comment-now">Commentaire </p></div>
+        </div>
+   </div>
+</section>
+
+
+    <div th:replace="~{index :: the-footer}"></div>
+    <div th:replace="~{index :: the-real-footer}"></div>
+<script src="/javascript/script.js"></script>
+<script src="/javascript/appearancescript.js"></script>
+</body>
+</html>

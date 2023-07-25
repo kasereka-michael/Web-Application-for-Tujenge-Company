@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{index :: head-content}">
+    </head>
+    <body>
+    <div th:replace="~{index :: navbar}"></div>
+    <div th:replace="~{index :: the-welcome-page}">
+    </div>
+
+  <section class="about-us hidden">
+      <div class="text-about-us">
+          <h1 class="about-us-head hidden">About us</h1>
+          <p class="text-about" id="mywelcom">Tujenge is a dynamic company deeply rooted in the construction industry, dedicated to bringing innovative solutions to life. With expertise spanning various domains, we go beyond traditional construction practices to deliver exceptional results in every project we undertake.
+            At Tujenge, our team is ready and available to work anywhere in West Africa. With a strong presence in the region, we have the capacity and expertise to undertake construction projects across various countries in West Africa.
+          </p>
+      </div>
+      <div class="text-about-photo hidden">
+          
+      </div>
+  </section>
+
+  <div th:replace="~{index :: the-footer}"></div>
+  <div th:replace="~{index :: the-real-footer}"></div>
+<script src="/javascript/script.js"></script>
+<script src="/javascript/appearancescript.js"></script>
+</body>
+</html>

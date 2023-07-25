@@ -1,0 +1,84 @@
+.rec-box.rec-members {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+  background-color: #fcfcfc;
+  padding: 10px 40px;
+  display: none;
+  flex-direction: column;
+  z-index: 2;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.card-header {
+  background-color: #38573a;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+.card-header button {
+  color: #38573a;
+  border: none;
+  float: right;
+  background: none;
+  cursor: pointer;
+}
+
+.card-header button:hover {
+  text-decoration: underline;
+}
+
+.rec-box.rec-members form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #38573a;
+}
+
+.rec-box.rec-members form input[type="text"],
+.rec-box.rec-members form input[type="email"],
+.rec-box.rec-members form input[type="tel"],
+.rec-box.rec-members form input[type="file"],
+.rec-box.rec-members form input[type="number"],
+.rec-box.rec-members form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.rec-box.rec-members form .btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rec-box.rec-members form .contact-btn {
+  background-color: #38573a;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rec-box.rec-members form .contact-btn:hover {
+  background-color: #2c4730;
+}
+
+.rec-box.rec-members form span {
+  color: red;
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Dashboard</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/dashbord.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/tool.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/project.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/file.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{/css/members.css}" rel="stylesheet" type="text/css"/>
+        <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}"
+                rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <div class="container">
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <h1>T</h1>
+                            </span>
+                            <span class="title">Tujenge</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="bar-chart-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="cloudy-night-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="sunny-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="server-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                     <li>
+                        <a th:href="@{#}">
+                            <span class="icon">
+                                <ion-icon name="save-outline"></ion-icon>
+                            </span>
+                            <span class="title">brand name</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- main -->
+            
+            <div class="main">
+
+                <div class="moredetails-rec">
+                    <div class="btn-container">
+                        <button class="btn member-btn" id="member"> add member </button> <button class="btn add-proj" id="add-project"> add project</button>
+                        <button class="btn upload-file-btn" id="upfile"> upload file </button><button class="btn rec-button"> add tool </button>
+                        <button class="btn contact-btn"> send notification </button>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="topbar" id="top_bar">
+                    <div class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div class="search">
+                        <label>
+                            <input type="text" placeholder="search here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </div>
+                    <div class="user">
+                        <img src="images\necum.jpg" alt=""> 
+                    </div>
+                </div>
+            
+                <!--cards-->
+                <div class="cardboxs">
+                    <div class="card">
+                        <div>
+                            <div class="numbers">1,455</div>
+                            <div class="cardName">Request</div>
+                        </div>
+                        
+                        <div class="iconBx">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        
+                    </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div>
+                            <div class="numbers">1,455</div>
+                            <div class="cardName">Subscribers</div>
+                        </div>
+
+                        <div class="iconBx">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </div>
+
+                    </div>
+
+                     <div class="card">
+                        <div>
+                            <div class="numbers">1,455</div>
+                            <div class="cardName">suggestion</div>
+                        </div>
+
+                        <div class="iconBx">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </div>
+
+                    </div>
+
+                     <div class="card">
+                        <div>
+                            <div class="numbers">1,455</div>
+                            <div class="cardName">on going project</div>
+                        </div>
+
+                        <div class="iconBx">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </div>
+                        
+                    </div>
+                 </div>
+                    
+                    <!-- details of all -->
+                    <div class="deatils">
+                        <div class="moredetails">
+                            <div class="cradheader">
+                                <h2>Project's Report</h2>
+                                <a th:href="@{#}" class="btn">View All</a>
+                            </div>
+                            <table class="projectTable">
+                                <thead>
+                                    <tr>
+                                        <td>Project Name</td>
+                                        <td>Project Owner</td>
+                                        <td>Started Date</td>
+                                        <td>Estimated Duration</td>
+                                        <td>Project Location</td>
+                                        <td>Chef of the building site</td>
+                                        <td>Project status</td>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>House building</td>
+                                        <td>michael</td>
+                                        <td>12/3/2023</td>
+                                        <td>3 months</td>
+                                        <td>Goma/ ndosho /AV de grand lac</td>
+                                        <td>Veridique and Elie </td>
+                                        <td><span class="status delivrered">unfinished</span></td>
+                                    </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                        <td>start </td>
+                                        <td>e</td>
+                                        <td>tithe</td>
+                                        <td>offerings</td>
+                                        <td>baptized</td>
+                                        <td>visitors</td>
+                                        <td><span class="status delivrered">church plans</span></td>              
+                                    </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                     <tr>
+                                         <td>House building</td>
+                                         <td>michael</td>
+                                         <td>12/3/2023</td>
+                                         <td>3 months</td>
+                                         <td>Goma/ ndosho /AV de grand lac</td>
+                                         <td>Veridique and Elie </td>
+                                         <td><span class="status delivrered">unfinished</span></td>
+                                     </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
+                        <!--administrator of church's account-->
+                        
+                        <div class="recentadmi">
+                             <div class="cradheader">
+                                <h2>Messages</h2>
+                                <div class="churches_number">
+                                <h5 class="record">Recorded churches</h5>
+                                <a th:href="@{#}" class="btn">60</a>
+                                </div>
+                            </div>
+                            
+                            <table>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60px">
+                                        <div class="imgBx"><img src="images\necum.jpg" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <h4>Name <br> <span>church's name</span></h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div> 
+                    </div>
+
+                <div class="rec-box rec-members" id="popup_member">
+                    <div class="card-header">
+                        <h2>Register Member</h2>
+                    </div>
+                    <form>
+                        <label>full name: <span>*</span></label><br>
+                        <input type="text" name="full-name" class="the-field" required autofocus/><br>
+                        <label>email: <span>*</span></label><br>
+                        <input type="email" name="email" class="the-field" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"/><br>
+                        <label>phone number: <span>*</span></label><br>
+                        <input type="tel" name="phone_number" class="the-field" required autofocus pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br>
+                        <label>title: <span>*</span></label><br>
+                        <input type="text" name="title" class="the-field" required autofocus/><br>
+                        <label>photo: <span>*</span></label><br>
+                        <input type="file" name="title" class="the-field" required/><br>
+                        <div class="btn-container">
+                            <button id="close-member" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="rec-box project-rec" id="popup-project">
+
+                    <div class="card-header">
+                        <h2>Register project</h2>
+                    </div>
+                    <form>
+                        <label>project title: <span>*</span></label><br>
+                        <input type="text" name="full-name" class="the-field" required autofocus/><br>
+                        <label>project owner: <span>*</span></label><br>
+                        <input type="text" name="email" class="the-field" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"/><br>
+                        <label>start date: <span>*</span></label><br>
+                        <input type="date" name="phone_number" class="the-field" required autofocus pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br>
+                        <label>duration: <span>*</span></label><br>
+                        <input type="number" name="title" class="the-field" required autofocus/><br>
+                        <label>project location: <span>*</span></label><br>
+                        <input type="text" name="title" class="the-field" required/><br>
+                        <label>chef of the building site: <span>*</span></label><br>
+                        <input type="file" name="title" class="the-field" required/><br>
+                        <label>project status: <span>*</span></label><br>
+                        <input type="checkbox" name="title" required/><br>
+                        <div class="btn-container">
+                            <button id="close-p" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+                <div class="rec-box rec-file" id="rec-file-popup">
+                    <div class="card-header">
+                        <h2>Upload file</h2>
+                    </div>
+                    <form>
+                        <label>file category: <span>*</span></label><br>
+                        <input type="text" name="file" class="the-field" placeholder="design/construction/3D/supervision" required/><br>
+
+                        <label>project location: <span>*</span></label><br>
+                        <input type="file" name="file" class="the-field" required/><br>
+
+                        <div class="btn-container">
+                            <button id="close-f" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="rec-box tools-rec" id="tool-registration-Popup">
+
+                    <div class="card-header">
+                        <h2>Register new tool </h2>
+                    </div>
+                    <form>
+                        <label>name: <span>*</span></label><br>
+                        <input type="text" name="tool" class="the-field" placeholder="" required/><br>
+
+                        <label>price: <span>*</span></label><br>
+                        <input type="number" name="file" placeholder="$ USD" class="the-field" required/><br>
+
+                        <div class="btn-container">
+                            <button id="close-t" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+                <div class="rec-box notification movableWindow" id="notificationPopup">
+                    <div class="card-header">
+                        <h2>Send Notification</h2>
+                    </div>
+                    <form>
+                        <label for="subject">Subject: <span>*</span></label><br>
+                        <input type="text" id="subject" name="subject" class="the-field" required/><br>
+
+                        <label for="message">Message: <span>*</span></label><br>
+                        <textarea id="message" name="message" placeholder="Write your message" class="the-field"></textarea><br>
+
+                        <div class="btn-container">
+                            <button id="close-n" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+        <script src="/javascript/main.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

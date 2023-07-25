@@ -1,0 +1,659 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 4, 2023, 1:21:19 PM
+    Author     : michael
+*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+:root {
+    --blue: #38573a;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+.container {
+    position: relative;
+    width: 100%;  
+}
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #38573a;
+    border-left: 10px solid #38573a;
+    transition: 0.5s; 
+    overflow: hidden;    
+}
+
+.navigation.active { 
+    width: 80px;
+}
+
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px; 
+    border-bottom-left-radius: 30px; 
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered
+{
+    background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1){
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a{
+   color: #38573a;
+}
+
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon{
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* to make the curve to the white hover bar*/
+
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/*main*/
+/*.main{
+    position: relative;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    padding-top: 60px;
+    background-color: var(--white);
+    transition: 0.5s;
+    z-index: 1
+}*/
+.main {
+  position: relative;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: calc(100vh - 60px); /* subtract the height of the topbar from the min-height */
+  padding-top: 60px;
+  background-color: var(--white);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+
+.main.active{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+
+
+.topbar{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  gap: 19%;
+  align-items: center;
+  padding: 0 10px;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  transition: 0.2s;
+  
+}
+.toggle{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.search{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label{
+    position: relative;
+    width: 100%;
+}
+
+.search label input{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+    
+}
+.search label ion-icon{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+}
+.user{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    left: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+
+        
+}
+.user img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+}
+
+
+/* for cards */
+
+.cardboxs {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    margin-bottom: 6px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30x;
+}
+
+.cardboxs .card{
+    position: relative;
+    background: var(--white);
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0,0.08); 
+}
+
+.cardboxs .card .numbers{
+    position: relative;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #38573a;
+    
+}
+
+.cardboxs .card .cardName{
+    color: var(--black2);
+    font-size: 1.1rem;
+    margin-top: 5px; 
+}
+.cardboxs .card .iconBx{
+   font-size: 3.0rem; 
+   color: var(--black2);
+}
+.cardboxs .card:hover{
+    background: #38573a;
+}
+.cardboxs .card:hover .numbers,
+.cardboxs .card:hover .cardName,
+.cardboxs .card:hover .iconBx{
+    color: var(--white);
+}
+.deatils {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+
+    display: grid; /* Use flex instead of grid */
+    grid-gap: 30px; /* Use gap instead of grid-gap */
+}
+
+.deatils .moredetails{
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+/*    border-radius: 20px;*/
+}
+.deatils .moredetails-rec{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+/*    border-radius: 20px;*/
+}
+.deatils .cradheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;   
+}
+
+.cradheader h2{
+    font-weight: 600;
+    color: #38573a;
+}
+
+.cradheader .btn{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px; 
+}
+
+.deatils .projectTable {
+    width: 100%;
+    border-collapse: collapse;
+    height: 80vh;
+    overflow-y: scroll;
+    margin-top: 5px;    
+}
+.deatils .projectTable thead td {
+    font-weight: 600;
+} 
+
+.deatils .moredetails .projectTable tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+}
+.deatils .moredetails .projectTable tr:last-child{
+    border-bottom: none;
+}
+.deatils .moredetails .projectTable tbody tr:hover{
+    background: #38573a;
+    color: var(--white);
+    cursor: pointer;
+}
+.deatils .moredetails .projectTable tr td{
+    padding: 10px;
+}
+
+.deatils .moredetails .projectTable tr td:last-child{
+    text-align: end;
+}
+.deatils .moredetails .projectTable tr td:nth-child(2){
+    text-align: start;
+}
+
+.status.delivrered{
+    padding: 2px 4px;
+    background: chartreuse;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.pending{
+    padding: 2px 4px;
+    background: crimson;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.inProgress{
+    padding: 2px 4px;
+    background: burlywood;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.pending{
+    padding: 2px 4px;
+    background: crimson;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status.return{
+    padding: 2px 4px;
+    background: aqua;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recentadmi{
+    position: relative;
+    display: grid;
+    height: 60vh;
+    overflow-x: hidden;
+    overflow-y: visible;
+    overflow: scroll;
+    min-height: 500px;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+/*    border-radius: 20px;*/
+}
+
+.churches_number{
+    position: relative;
+    padding: 5px 10px;
+    font-weight: 300;
+    align-items: center;
+}
+.record{
+    padding: 5px;
+    color: var(--blue);
+}
+.cradheader .churches_number .record .btn{
+    position: relative;
+    padding: 5px 10px;
+    background: #38573a;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px; 
+}
+.cradheader .churches_number a{
+    margin-left: 20px; 
+    font-weight: 500;
+}
+
+
+.recentadmi .imgBx{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-top: 10px;
+    
+}
+.recentadmi .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.recentadmi table tbody{
+    min-height: 600px;
+    overflow: scroll;
+}
+.recentadmi table tr:hover{
+   background: #38573a;
+   color: var(--white);
+}
+
+.recentadmi table tbody tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+    color: var(--black1);
+    margin: 5px;
+    
+}
+.recentadmi table tbody tr:last-child{
+    border-bottom: none;
+}
+
+.recentadmi table tr:hover{
+    background: #38573a;
+    color: var(--white);
+    cursor: pointer;
+}
+.recentadmi table tr td span{
+    font-size: 14px;
+    color:darkgrey;
+}
+
+.the-field{
+    width: 100%;
+    height: 50px;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 1px solid darkgrey;
+    text-align: start;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 5px auto;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+.contact-btn{
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    border-radius: 20px;
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 1px solid darkgrey;
+    background-color: #38573a;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.contact-btn:hover{
+    height: 55px;
+    width: 210px;
+    color: #38573a;
+    font-weight: 600;
+    font-size: 13px;
+    background-color: #fff;
+}
+
+.btn{
+height: auto;
+font-weight: 100;
+font-size: 14px;
+color: #fff;
+background-color: #38573a;
+padding: 10px 30px;
+border: solid #38573a 1px;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 1000ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: lowercase;
+margin: 10px;
+}
+
+.btn:hover{
+
+transition : 100ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background-color: #fff;
+color:  #38573a;
+border: dotted 2px  #38573a;
+}
+
+.rec-box.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+  background-color: #fcfcfc;
+  padding: 10px 40px;
+  display: none;
+  flex-direction: column;
+  z-index: 2;
+  animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.card-header {
+  background-color: #38573a;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+.card-header button {
+  color: #38573a;
+  border: none;
+  float: right;
+  background: none;
+  cursor: pointer;
+}
+
+.card-header button:hover {
+  text-decoration: underline;
+}
+
+.rec-box.notification form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #38573a;
+}
+
+.rec-box.notification form input[type="text"],
+.rec-box.notification form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.rec-box.notification form .btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rec-box.notification form .contact-btn {
+  background-color: #38573a;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rec-box.notification form .contact-btn:hover {
+  background-color: #2c4730;
+}
+
+.rec-box.notification form span {
+  color: red;
+}
+
+
