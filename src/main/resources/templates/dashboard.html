@@ -432,19 +432,19 @@
                     <div class="card-header">
                         <h2>Register Member</h2>
                     </div>
-                    <form>
+                    <form th:action="@{/savemember}" th:object="${member}" method="post">
                         <label>full name: <span>*</span></label><br>
-                        <input type="text" name="full-name" class="the-field" required autofocus/><br>
+                        <input type="text" name="full_name" th:field="*{fullName}" class="the-field" required/><br>
                         <label>email: <span>*</span></label><br>
-                        <input type="email" name="email" class="the-field" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"/><br>
+                        <input type="email" name="email" class="the-field" th:field="*{email.email}" required /><br>
                         <label>phone number: <span>*</span></label><br>
-                        <input type="tel" name="phone_number" class="the-field" required autofocus pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br>
+                        <input type="tel" name="phone_number" th:field="*{phone}" class="the-field" required /><br>
                         <label>title: <span>*</span></label><br>
-                        <input type="text" name="title" class="the-field" required autofocus/><br>
+                        <input type="text" name="title" class="the-field" th:field="*{title}" spellcheck="true" required/><br>
                         <label>photo: <span>*</span></label><br>
-                        <input type="file" name="title" class="the-field" required/><br>
+                        <input type="file" name="photo" th:field="*{picture}" class="the-field" required/><br>
                         <div class="btn-container">
-                            <button id="close-member" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                            <button id="close-member" class="contact-btn">Close</button> <input type="submit" value="Submit" class="contact-btn">
                         </div>
                     </form>
                 </div>
@@ -461,7 +461,7 @@
                         <label>project owner: <span>*</span></label><br>
                         <input type="text" name="owner" class="the-field" th:field="*{owner}" required/><br>
                         <label>owner email: <span>*</span></label><br>
-                        <input type="email" name="ownerEmail" class="the-field" th:field="*{ownerEmail}" required/><br>
+                        <input type="email" name="email" class="the-field" th:field="*{email.email}" required/><br>
                         <label>owner number: <span>*</span></label><br>
                         <input type="tel" name="phone_number" th:field="*{ownerPhone}" class="the-field" required/><br>
                         <label>duration: <span>*</span></label><br>
@@ -469,7 +469,7 @@
                         <label>duration: <span>*</span></label><br>
                         <input type="datetime-local" name="date" th:field="*{dateTime}" class="the-field" required /><br>
                         <label>project location: <span>*</span></label><br>
-                        <input type="text" name="location" th:field="*{location}" class="the-field" required/><br>
+                        <input type="text" name="location" th:field="*{location}" spellcheck="true" class="the-field" required/><br>
                         <label>chef of the building site: <span>*</span></label><br>
                         <input type="text" name="siteChef" th:field="*{siteChef}"class="the-field" required/><br>
                         <label>attach pdf file: <span>*</span></label><br>
@@ -489,15 +489,26 @@
                     <div class="card-header">
                         <h2>Upload file</h2>
                     </div>
-                    <form>
+                    <form th:action="@{/savefile}" th:object="${files}" method="post">
                         <label>file category: <span>*</span></label><br>
-                        <input type="text" name="file" class="the-field" placeholder="design/construction/3D/supervision" required/><br>
+                        <select required class="the-field" th:field="*{fileCategory}">
+                            <option value="Design">Design</option>
+                            <option value="Construction">Construction</option>
+                            <option value="3D video">3D video</option>
+                            <option value="Supervision">Supervision</option>
+                        </select>
+
+                        <label>file title: <span>*</span></label><br>
+                        <input type="text" name="file" th:field="*{fileTitle}" autocapitalize="characters" maxlength="25" class="the-field" required/><br>
 
                         <label>upload file: <span>*</span></label><br>
-                        <input type="file" name="file" class="the-field" required/><br>
+                        <input type="file" name="file" th:field="*{file}" class="the-field" required/><br>
+
+                        <label>file Comment: <span>*</span></label><br>
+                        <textarea th:field="*{fileComment}" autocapitalize="characters" maxlength="310" class="the-field" spellcheck="true" placeholder="only 310 characters" required></textarea><br>
 
                         <div class="btn-container">
-                            <button id="close-f" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                            <button id="close-f" class="contact-btn">Close</button> <input type="submit" value="Submit" class="contact-btn">
                         </div>
                     </form>
                 </div>
@@ -508,15 +519,15 @@
                     <div class="card-header">
                         <h2>Register new tool </h2>
                     </div>
-                    <form>
+                    <form th:action="@{/saveTool}" th:object="${tool}" method="post">
                         <label>name: <span>*</span></label><br>
-                        <input type="text" name="tool" class="the-field" placeholder="" required/><br>
+                        <input type="text" th:field="*{toolname}" spellcheck="true" name="tool" class="the-field" placeholder="" required/><br>
 
                         <label>price: <span>*</span></label><br>
-                        <input type="number" name="file" placeholder="$ USD" class="the-field" required/><br>
+                        <input type="text" th:field="*{price}" name="file" placeholder="$ USD" class="the-field" required/><br>
 
                         <div class="btn-container">
-                            <button id="close-t" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                            <button id="close-t" class="contact-btn">Close</button> <input type="submit" value="Submit" class="contact-btn"/>
                         </div>
                     </form>
 
@@ -533,7 +544,7 @@
                         <input type="text" id="subject" name="subject" class="the-field" required/><br>
 
                         <label for="message">Message: <span>*</span></label><br>
-                        <textarea id="message" name="message" placeholder="Write your message" class="the-field"></textarea><br>
+                        <textarea id="message" name="message" autocapitalize="characters" placeholder="Write your message" class="the-field"></textarea><br>
 
                         <div class="btn-container">
                             <button id="close-n" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">

@@ -45,6 +45,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public long getAllsuscribers() {
+        return userRepository.count();
+    }
+
+    @Override
     public Boolean verifyToken(String token) {
 
         Confirmation confirmation = confirmationRepository.findByToken(token);

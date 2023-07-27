@@ -18,4 +18,9 @@ public class EmailUtils {
     public static String getVerificationUrl(String host, String token) {
         return host + "/api/users?token=" +token;
     }
+
+    public static String ViewTheUplaodedFile(String host,String api){
+        return host +""+api;
+    }
+
 }

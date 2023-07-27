@@ -1,9 +1,6 @@
 package com.SendEmail.sendemailAllKind.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +13,9 @@ public class Upload_file {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String filecategory;
+    private String fileCategory;
+    private String fileTitle;
+    @Column(length = 310)
+    private String fileComment;
     private byte[] file;
 }

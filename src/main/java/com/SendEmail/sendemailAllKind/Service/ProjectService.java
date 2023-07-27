@@ -8,4 +8,6 @@ public interface ProjectService {
     List<Projects> getProjectStatus(Boolean status);
 
     Boolean saveProject(Projects projects);
+
+    long totalProjects();
 }

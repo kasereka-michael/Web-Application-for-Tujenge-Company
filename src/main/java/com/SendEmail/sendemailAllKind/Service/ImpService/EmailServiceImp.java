@@ -1,7 +1,9 @@
 package com.SendEmail.sendemailAllKind.Service.ImpService;
 
+import com.SendEmail.sendemailAllKind.Repository.EmailRepository;
 import com.SendEmail.sendemailAllKind.Service.Email_Service;
 import com.SendEmail.sendemailAllKind.Utils.EmailUtils;
+import com.SendEmail.sendemailAllKind.domain.Email;
 import jakarta.activation.DataHandler;
 import jakarta.activation.DataSource;
 import jakarta.activation.FileDataSource;
@@ -22,19 +24,23 @@ import org.thymeleaf.context.Context;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
+import static com.SendEmail.sendemailAllKind.Utils.EmailUtils.ViewTheUplaodedFile;
 import static com.SendEmail.sendemailAllKind.Utils.EmailUtils.getVerificationUrl;
 
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImp implements Email_Service  {
     public static final String NEW_PROJECT = "Message for your project";
+    public static final String NEW_FILE_UPLOAD ="Tujenge uploaded a New file";
     public static final String UTF_8_ENCODING = "UTF-8";
     public static final String EMAIL_TEMPLATE = "emailTemplate";
     public static final String TEXT_HTML_ENCODING = "text/html";
     private final JavaMailSender mailSender;
     private final TemplateEngine templateEngine;
+    private final EmailRepository emailRepository;
     @Value("${spring.properties.mail.mine.smtp.verify.host}")
     private String host;
     @Value("${spring.mail.username}")
@@ -183,8 +189,6 @@ public class EmailServiceImp implements Email_Service  {
     public void sendSimpleHtmlEmailWithEmbeddedFile(String name, String to, String token) {
         try{
 
-
-
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
             helper.setPriority(1);
@@ -222,6 +226,57 @@ public class EmailServiceImp implements Email_Service  {
             System.out.print("the error is here "+exception.getMessage());
             throw new RuntimeException("the error "+exception.getMessage());
         }
+    }
+
+    @Override
+    @Async
+    public void sendHtmlEmailToAllSubscribers(List<Email> toList,String host, String messages,String api,String path) {
+        try{
+
+            MimeMessage message = getMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
+            helper.setPriority(1);
+            helper.setSubject(NEW_FILE_UPLOAD);
+            helper.setFrom(fromEmail);
+            helper.setTo(toList.toArray(String[]::new));
+//            helper.setText(text, true);
+            Context context = new Context();
+            context.setVariables(Map.of("text", messages,"url", ViewTheUplaodedFile(host,api)));
+
+//            add html eamil body
+            String text = templateEngine.process(EMAIL_TEMPLATE, context);
+            MimeMultipart mimeMultipart = new MimeMultipart( "related");
+            BodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setContent(text,TEXT_HTML_ENCODING);
+            mimeMultipart.addBodyPart(messageBodyPart);
+
+//            add image to the email body
+            BodyPart imageBodyPart = new MimeBodyPart();
+            DataSource datasource = new FileDataSource(System.getProperty("user.home") + path);
+
+
+            imageBodyPart.setDataHandler(new DataHandler(datasource));
+            imageBodyPart.setHeader("Content-ID","image");
+            mimeMultipart.addBodyPart(imageBodyPart);
+
+//            adding content and file in to the message
+            message.setContent(mimeMultipart);
+
+
+
+            mailSender.send(message);
+
+        }catch(Exception exception){
+            System.out.print("the error is here "+exception.getMessage());
+            throw new RuntimeException("the error "+exception.getMessage());
+        }
+    }
+
+
+
+    @Override
+    public List<Email> allSubscribers() {
+        return emailRepository.findAll();
     }
 
     private MimeMessage getMimeMessage(){

@@ -47,5 +47,10 @@ public class ProjectServiceImplement implements ProjectService {
         return result;
     }
 
+    @Override
+    public long totalProjects() {
+        return projectRepository.count();
+    }
+
 
 }

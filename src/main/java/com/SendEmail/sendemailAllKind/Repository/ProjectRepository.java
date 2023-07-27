@@ -9,5 +9,5 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Projects,Long> {
     List<Projects> findByOwner(String owner);
     List<Projects> findByStatus(Boolean status);
-
+    long count();
 }

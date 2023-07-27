@@ -1,9 +1,7 @@
 package com.SendEmail.sendemailAllKind.resource;
 
 import com.SendEmail.sendemailAllKind.Service.ImpService.UserServiceImp;
-import com.SendEmail.sendemailAllKind.domain.HttpResponse;
-import com.SendEmail.sendemailAllKind.domain.Projects;
-import com.SendEmail.sendemailAllKind.domain.Users;
+import com.SendEmail.sendemailAllKind.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +51,9 @@ public class USerResource {
     @GetMapping("/api/admin/dashboard")
     public String openDashboard(Model model) {
         model.addAttribute("project", new Projects());
+        model.addAttribute("member", new Members());
+        model.addAttribute("files", new Upload_file());
+        model.addAttribute("tool", new Tools());
         return "dashboard";
     }
 

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface EmailRepository extends JpaRepository<Email,Long> {
     Email findByEmailIgnoreCase(String email);
     Email existsByEmail(String email);
+    long count();
 }

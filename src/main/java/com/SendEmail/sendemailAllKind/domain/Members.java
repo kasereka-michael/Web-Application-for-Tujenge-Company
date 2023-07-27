@@ -15,10 +15,11 @@ public class Members {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String full_name;
+    private String fullName;
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Email email;
     private String phone;
+    private String title;
     private byte[] picture;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "project_supervision", joinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id"),
