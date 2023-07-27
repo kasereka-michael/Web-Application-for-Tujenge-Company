@@ -1,8 +1,8 @@
 package com.SendEmail.sendemailAllKind.Service;
 
-import com.SendEmail.sendemailAllKind.domain.User;
+import com.SendEmail.sendemailAllKind.domain.Users;
 
 public interface UserService {
-    User saveUser(User user);
+    Users saveUser(Users users);
     Boolean verifyToken(String token);
 }

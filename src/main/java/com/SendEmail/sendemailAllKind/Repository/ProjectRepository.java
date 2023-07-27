@@ -2,10 +2,12 @@ package com.SendEmail.sendemailAllKind.Repository;
 
 import com.SendEmail.sendemailAllKind.domain.Projects;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface ProjectRepository extends JpaRepository<Projects,Long> {
     List<Projects> findByOwner(String owner);
-    List<Projects> existsByStatus(Boolean status);
+    List<Projects> findByStatus(Boolean status);
 
 }

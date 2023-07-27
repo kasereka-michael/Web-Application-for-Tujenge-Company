@@ -21,6 +21,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 import static com.SendEmail.sendemailAllKind.Utils.EmailUtils.getVerificationUrl;
@@ -28,7 +29,7 @@ import static com.SendEmail.sendemailAllKind.Utils.EmailUtils.getVerificationUrl
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImp implements Email_Service  {
-    public static final String NEW_USER_ACCOUNT_VERIFICATION = "new user account verification";
+    public static final String NEW_PROJECT = "Message for your project";
     public static final String UTF_8_ENCODING = "UTF-8";
     public static final String EMAIL_TEMPLATE = "emailTemplate";
     public static final String TEXT_HTML_ENCODING = "text/html";
@@ -44,16 +45,14 @@ public class EmailServiceImp implements Email_Service  {
 
     @Override
     @Async
-    public void sendSimpleMailMessage(String name, String to, String token) {
+    public void sendSimpleNewProjectMailMessage(String name, String to, String project_title, LocalDateTime dateTime) {
         try{
-
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+            message.setSubject(NEW_PROJECT);
             message.setFrom(fromEmail);
             message.setTo(to);
-            message.setText(EmailUtils.getEMailMessage(name,host,token));
+            message.setText(EmailUtils.getEMailNewProjectMessage(name,project_title,dateTime));
             mailSender.send(message);
-
         }catch(Exception exception){
             System.out.print("the error is here "+exception.getMessage());
             throw new RuntimeException("the error "+exception.getMessage());
@@ -68,7 +67,7 @@ public class EmailServiceImp implements Email_Service  {
 
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+//            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
             helper.setFrom(fromEmail);
             helper.setTo(to);
             helper.setText(EmailUtils.getEMailMessage(name,host,token));
@@ -98,7 +97,7 @@ public class EmailServiceImp implements Email_Service  {
 
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+//            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
             helper.setFrom(fromEmail);
             helper.setTo(to);
             helper.setText(EmailUtils.getEMailMessage(name,host,token));
@@ -128,7 +127,7 @@ public class EmailServiceImp implements Email_Service  {
 
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+//            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
             helper.setFrom(fromEmail);
             helper.setTo(to);
             helper.setText(EmailUtils.getEMailMessage(name,host,token));
@@ -161,7 +160,7 @@ public class EmailServiceImp implements Email_Service  {
             String text = templateEngine.process(EMAIL_TEMPLATE, context);
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+//            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
             helper.setFrom(fromEmail);
             helper.setTo(to);
             helper.setText(text, true);
@@ -189,7 +188,7 @@ public class EmailServiceImp implements Email_Service  {
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
             helper.setPriority(1);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+//            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
             helper.setFrom(fromEmail);
             helper.setTo(to);
 //            helper.setText(text, true);

@@ -111,7 +111,7 @@
                             <ion-icon name="search-outline"></ion-icon>
                         </label>
                     </div>
-                    <div class="user">
+                    <div class="users">
                         <img src="images\necum.jpg" alt=""> 
                     </div>
                 </div>
@@ -455,23 +455,29 @@
                     <div class="card-header">
                         <h2>Register project</h2>
                     </div>
-                    <form>
+                    <form th:action="@{/saveproject}" th:object="${project}" method="post">
                         <label>project title: <span>*</span></label><br>
-                        <input type="text" name="full-name" class="the-field" required autofocus/><br>
+                        <input type="text" name="title" th:field="*{title}" class="the-field" required/><br>
                         <label>project owner: <span>*</span></label><br>
-                        <input type="text" name="email" class="the-field" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$"/><br>
-                        <label>start date: <span>*</span></label><br>
-                        <input type="date" name="phone_number" class="the-field" required autofocus pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/><br>
+                        <input type="text" name="owner" class="the-field" th:field="*{owner}" required/><br>
+                        <label>owner email: <span>*</span></label><br>
+                        <input type="email" name="ownerEmail" class="the-field" th:field="*{ownerEmail}" required/><br>
+                        <label>owner number: <span>*</span></label><br>
+                        <input type="tel" name="phone_number" th:field="*{ownerPhone}" class="the-field" required/><br>
                         <label>duration: <span>*</span></label><br>
-                        <input type="number" name="title" class="the-field" required autofocus/><br>
+                        <input type="text" name="duration" th:field="*{duration}" class="the-field" required /><br>
+                        <label>duration: <span>*</span></label><br>
+                        <input type="datetime-local" name="date" th:field="*{dateTime}" class="the-field" required /><br>
                         <label>project location: <span>*</span></label><br>
-                        <input type="text" name="title" class="the-field" required/><br>
+                        <input type="text" name="location" th:field="*{location}" class="the-field" required/><br>
                         <label>chef of the building site: <span>*</span></label><br>
-                        <input type="file" name="title" class="the-field" required/><br>
+                        <input type="text" name="siteChef" th:field="*{siteChef}"class="the-field" required/><br>
+                        <label>attach pdf file: <span>*</span></label><br>
+                        <input type="file" name="" th:field="*{projectView}"class="the-field" required/><br>
                         <label>project status: <span>*</span></label><br>
-                        <input type="checkbox" name="title" required/><br>
+                        <input type="checkbox" name="title" th:field="*{status}" required/><br>
                         <div class="btn-container">
-                            <button id="close-p" class="contact-btn">Close</button> <input type="button" value="Submit" class="contact-btn">
+                            <button id="close-p" class="contact-btn">Close</button> <input type="submit" value="Submit" class="contact-btn">
                         </div>
                     </form>
 

@@ -16,8 +16,8 @@ public class Members {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String full_name;
-    @Column(unique = true)
-    private String email;
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Email email;
     private String phone;
     private byte[] picture;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
