@@ -489,26 +489,26 @@
                     <div class="card-header">
                         <h2>Upload file</h2>
                     </div>
-                    <form th:action="@{/savefile}" th:object="${files}" method="post">
+                    <form th:action="@{/savefile}" th:object="${files}" enctype="multipart/form-data" onsubmit="return validateSize()" method="post">
                         <label>file category: <span>*</span></label><br>
-                        <select required class="the-field" th:field="*{fileCategory}">
-                            <option value="Design">Design</option>
+                        <select required class="the-field" name="category" th:field="*{fileCategory}">
+                            <option  value="Design">Design</option>
                             <option value="Construction">Construction</option>
                             <option value="3D video">3D video</option>
                             <option value="Supervision">Supervision</option>
                         </select>
 
                         <label>file title: <span>*</span></label><br>
-                        <input type="text" name="file" th:field="*{fileTitle}" autocapitalize="characters" maxlength="25" class="the-field" required/><br>
+                        <input type="text" name="fileTitle" autocapitalize="characters" maxlength="25" class="the-field" required/><br>
 
                         <label>upload file: <span>*</span></label><br>
-                        <input type="file" name="file" th:field="*{file}" class="the-field" required/><br>
+                        <input type="file" name="file_field"  class="the-field" required/><br>
 
                         <label>file Comment: <span>*</span></label><br>
-                        <textarea th:field="*{fileComment}" autocapitalize="characters" maxlength="310" class="the-field" spellcheck="true" placeholder="only 310 characters" required></textarea><br>
+                        <textarea th:field="*{fileComment}" autocapitalize="characters" name="comment" maxlength="310" class="the-field" spellcheck="true" placeholder="only 310 characters" required></textarea><br>
 
                         <div class="btn-container">
-                            <button id="close-f" class="contact-btn">Close</button> <input type="submit" value="Submit" class="contact-btn">
+                            <button id="close-f" class="contact-btn">Close</button> <input type="submit" value="Submit"  class="contact-btn">
                         </div>
                     </form>
                 </div>

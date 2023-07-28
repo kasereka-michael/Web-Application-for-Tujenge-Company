@@ -20,7 +20,7 @@ public class EmailUtils {
     }
 
     public static String ViewTheUplaodedFile(String host,String api){
-        return host +""+api;
+        return host +"/"+api;
     }
 
 }

@@ -12,6 +12,6 @@ public interface Email_Service {
     void sendSimpleMailMessageWithEmbeddedImages(String name, String to, String token);
     void sendSimpleHtmlEmail(String name, String to, String token);
     void sendSimpleHtmlEmailWithEmbeddedFile(String name, String to, String token);
-    public void sendHtmlEmailToAllSubscribers(List<Email> toList, String host, String messages, String api,String path);
+    public void sendHtmlEmailToAllSubscribers(List<Email> toList,String api,String path);
     List<Email> allSubscribers();
 }

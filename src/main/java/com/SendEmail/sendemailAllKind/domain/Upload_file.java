@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -17,5 +18,7 @@ public class Upload_file {
     private String fileTitle;
     @Column(length = 310)
     private String fileComment;
+    @Lob
+    @Column(columnDefinition="LONGBLOB")
     private byte[] file;
 }

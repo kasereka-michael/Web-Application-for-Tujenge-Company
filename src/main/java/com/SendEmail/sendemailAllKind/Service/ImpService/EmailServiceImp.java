@@ -12,6 +12,7 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,6 +20,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -32,6 +34,7 @@ import static com.SendEmail.sendemailAllKind.Utils.EmailUtils.getVerificationUrl
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EmailServiceImp implements Email_Service  {
     public static final String NEW_PROJECT = "Message for your project";
     public static final String NEW_FILE_UPLOAD ="Tujenge uploaded a New file";
@@ -230,7 +233,7 @@ public class EmailServiceImp implements Email_Service  {
 
     @Override
     @Async
-    public void sendHtmlEmailToAllSubscribers(List<Email> toList,String host, String messages,String api,String path) {
+    public void sendHtmlEmailToAllSubscribers(List<Email> toList,String api,String path) {
         try{
 
             MimeMessage message = getMimeMessage();
@@ -238,21 +241,24 @@ public class EmailServiceImp implements Email_Service  {
             helper.setPriority(1);
             helper.setSubject(NEW_FILE_UPLOAD);
             helper.setFrom(fromEmail);
-            helper.setTo(toList.toArray(String[]::new));
-//            helper.setText(text, true);
-            Context context = new Context();
-            context.setVariables(Map.of("text", messages,"url", ViewTheUplaodedFile(host,api)));
+            String[] recipients = toList.stream().map(Email::getEmail).toArray(String[]::new);
+            helper.setTo(recipients);
 
-//            add html eamil body
+
+            Context context = new Context();
+            context.setVariables(Map.of("url", ViewTheUplaodedFile(host,api)));
+
+//            add html email body
             String text = templateEngine.process(EMAIL_TEMPLATE, context);
             MimeMultipart mimeMultipart = new MimeMultipart( "related");
             BodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setContent(text,TEXT_HTML_ENCODING);
             mimeMultipart.addBodyPart(messageBodyPart);
-
+            log.info("the file path in the email service "+ path);
 //            add image to the email body
             BodyPart imageBodyPart = new MimeBodyPart();
-            DataSource datasource = new FileDataSource(System.getProperty("user.home") + path);
+            DataSource datasource = new FileDataSource(path);
+
 
 
             imageBodyPart.setDataHandler(new DataHandler(datasource));
