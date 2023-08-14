@@ -19,7 +19,7 @@ public class USerResource {
     private final UserServiceImp userServiceImp;
 
 
-     @GetMapping("/")
+    @GetMapping("/")
     public String openProject(){
         return "index";
     }
