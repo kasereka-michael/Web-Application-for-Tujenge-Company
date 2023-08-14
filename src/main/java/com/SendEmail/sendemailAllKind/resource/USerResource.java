@@ -19,6 +19,10 @@ public class USerResource {
     private final UserServiceImp userServiceImp;
 
 
+     @GetMapping("/")
+    public String openProject(){
+        return "index";
+    }
 
     @GetMapping("/about")
     public String openABout(){
